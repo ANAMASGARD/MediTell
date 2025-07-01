@@ -10,27 +10,32 @@ import {
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { checkUser } from "@/lib/checkUser";
-// import { Badge } from "./ui/badge";
-// import { checkAndAllocateCredits } from "@/actions/credits";
+import { Badge } from "./ui/badge";
+import { checkAndAllocateCredits } from "@/actions/credits";
 import Image from "next/image";
 
-const Header = async () => {
-   const user = await checkUser();
+export default async function Header() {
+  const user = await checkUser();
+  if (user?.role === "PATIENT") {
+    await checkAndAllocateCredits(user);
+  }
+
   return (
-   <header  className='fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-10 supports-[backdrop-filter]:bg-background/50 dark:bg-background/50'>
-    <nav className='container mx-auto flex items-center justify-between p-4'>
-        <Link href="/" className="text-2xl font-bold text-gray-800 dark:text-gray-200">
-        <Image 
-        src="/logo-single.png"
-        alt="MediTell Logo"
-        width={50}
-        height={50}
-        className="inline-block mr-2"
-        />
+    <header className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-10 supports-[backdrop-filter]:bg-background/60">
+      <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2 cursor-pointer">
+          <Image
+            src="/logo-single.png"
+            alt="Medimeet Logo"
+            width={200}
+            height={60}
+            className="h-10 w-auto object-contain"
+          />
         </Link>
-        <div className='flex items-center space-x-4'>
-          
-             <SignedIn>
+
+        {/* Action Buttons */}
+        <div className="flex items-center space-x-2">
+          <SignedIn>
             {/* Admin Links */}
             {user?.role === "ADMIN" && (
               <Link href="/admin">
@@ -96,10 +101,51 @@ const Header = async () => {
             )}
           </SignedIn>
 
-        </div>
-    </nav>
-   </header>
-  )
-}
+          {(!user || user?.role !== "ADMIN") && (
+            <Link href={user?.role === "PATIENT" ? "/pricing" : "/doctor"}>
+              <Badge
+                variant="outline"
+                className="h-9 bg-emerald-900/20 border-emerald-700/30 px-3 py-1 flex items-center gap-2"
+              >
+                <CreditCard className="h-3.5 w-3.5 text-emerald-400" />
+                <span className="text-emerald-400">
+                  {user && user.role !== "ADMIN" ? (
+                    <>
+                      {user.credits}{" "}
+                      <span className="hidden md:inline">
+                        {user?.role === "PATIENT"
+                          ? "Credits"
+                          : "Earned Credits"}
+                      </span>
+                    </>
+                  ) : (
+                    <>Pricing</>
+                  )}
+                </span>
+              </Badge>
+            </Link>
+          )}
 
-export default Header
+          <SignedOut>
+            <SignInButton>
+              <Button variant="secondary">Sign In</Button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            {/* <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "w-10 h-10",
+                  userButtonPopoverCard: "shadow-xl",
+                  userPreviewMainIdentifier: "font-semibold",
+                },
+              }}
+              afterSignOutUrl="/"
+            /> */}
+          </SignedIn>
+        </div>
+      </nav>
+    </header>
+  );
+}

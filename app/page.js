@@ -4,7 +4,7 @@ import { ArrowRight, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-// import Pricing from "@/components/pricing";
+import Pricing from "@/components/pricing";
 import { creditBenefits, features, testimonials } from "@/lib/data";
 
 export default function Home() {
@@ -99,7 +99,7 @@ export default function Home() {
       </section> 
 
       {/* Pricing Section with green medical styling */}
-      {/* <section id="pricing" className="py-20">
+      <section id="pricing" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge
@@ -158,7 +158,7 @@ export default function Home() {
             </Card>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Testimonials with green medical accents */}
       {/* <section className="py-20 bg-muted/30">
