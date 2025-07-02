@@ -1,4 +1,4 @@
-import { getDoctorById, getAvailableTimeSlots } from "@/actions/appointments";
+import { getDoctorById, getAvailableTimeSlots } from "@/actions/appointment";
 import { DoctorProfile } from "./_components/doctor-profile";
 import { redirect } from "next/navigation";
 

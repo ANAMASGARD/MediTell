@@ -1,4 +1,4 @@
-import { getDoctorById } from "@/actions/appointments";
+import { getDoctorById } from "@/actions/appointment";
 import { redirect } from "next/navigation";
 import { PageHeader } from "@/components/page-header";
 
