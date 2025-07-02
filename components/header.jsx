@@ -133,7 +133,7 @@ export default async function Header() {
           </SignedOut>
 
           <SignedIn>
-            {/* <UserButton
+            <UserButton
               appearance={{
                 elements: {
                   avatarBox: "w-10 h-10",
@@ -142,7 +142,7 @@ export default async function Header() {
                 },
               }}
               afterSignOutUrl="/"
-            /> */}
+            />
           </SignedIn>
         </div>
       </nav>

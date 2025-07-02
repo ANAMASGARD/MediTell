@@ -52,11 +52,11 @@ export default function Home() {
 
             <div className="relative h-[400px] lg:h-[500px] rounded-xl overflow-hidden">
               <Image
-                src="/onboarding-img.png"
+                src="/banner2.png"
                 alt="Doctor consultation"
                 fill
                 priority
-               className="border-emerald-700/30 hover:bg-muted/80 rounded-lg"
+                className="object-cover md:pt-14 rounded-xl"
               />
             </div>
           </div>
@@ -96,7 +96,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section> 
+      </section>
 
       {/* Pricing Section with green medical styling */}
       <section id="pricing" className="py-20">
@@ -118,8 +118,10 @@ export default function Home() {
           </div>
 
           <div className="mx-auto">
+            {/* Clerk Pricing Table */}
             <Pricing />
 
+            {/* Description */}
             <Card className="mt-12 bg-muted/20 border-emerald-900/30">
               <CardHeader>
                 <CardTitle className="text-xl font-semibold text-white flex items-center">
@@ -161,7 +163,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials with green medical accents */}
-      {/* <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge
@@ -208,7 +210,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* CTA Section with green medical styling */}
       <section className="py-20">
@@ -251,6 +253,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  
   );
 }

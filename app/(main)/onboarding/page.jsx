@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-// import { useForm } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Card,
   CardContent,
@@ -23,8 +23,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { setUserRole } from "@/actions/onboarding";
-// import { doctorFormSchema } from "@/lib/schema";
-// import { SPECIALTIES } from "@/lib/specialities";
+import { doctorFormSchema } from "@/lib/schema";
+import { SPECIALTIES } from "@/lib/specialities";
 import useFetch from "@/hooks/use-fetch";
 import { useEffect } from "react";
 
