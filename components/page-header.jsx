@@ -35,6 +35,18 @@ import useFetch from "@/hooks/use-fetch";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
+export function PageHeader({ icon, title }) {
+  return (
+    <div className="mb-8">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="text-emerald-400">{icon}</div>
+        <h1 className="text-3xl font-bold text-white">{title}</h1>
+      </div>
+      <div className="h-1 w-20 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full"></div>
+    </div>
+  );
+}
+
 export function AppointmentCard({
   appointment,
   userRole,
@@ -574,3 +586,4 @@ export function AppointmentCard({
     </>
   );
 }
+
