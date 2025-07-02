@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getDoctorsBySpecialty } from "@/actions/doctors-listing";
+import { getDoctorsBySpecialty } from "@/actions/doctors-listening";
 import { DoctorCard } from "../components/doctor-card";
 import { PageHeader } from "@/components/page-header";
 
